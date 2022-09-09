@@ -82,7 +82,7 @@ def mergeSort(arr):
 
 
 def main():
-    size = 1000000
+    size = 10000000
     global comparisons
     global S
     arr = random.sample(range(1, size + 1), size)
