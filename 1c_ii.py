@@ -24,7 +24,6 @@ def merge(left, right):
     global comparisons
 
     while (leftIndex < len(left) or rightIndex < len(right)):
-        comparisons += 1
         if leftIndex == len(left):
             sorted.append(right[rightIndex]);
             rightIndex += 1
@@ -32,9 +31,11 @@ def merge(left, right):
             sorted.append(left[leftIndex])
             leftIndex += 1
         elif (left[leftIndex] < right[rightIndex]):
+            comparisons += 1
             sorted.append(left[leftIndex])
             leftIndex += 1
         else:
+            comparisons += 1
             sorted.append(right[rightIndex]);
             rightIndex += 1
     return sorted;
@@ -72,5 +73,8 @@ def main():
         sorted = mergeSort(a)
         print("S: ", S, " Comparisons: ", comparisons)
         S += 1
-
 main()
+
+
+
+
