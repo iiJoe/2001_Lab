@@ -1,4 +1,5 @@
 import random
+import time
 
 S = 2
 comparisons = 0
@@ -70,8 +71,12 @@ def main():
     while S <= 100:
         comparisons = 0
         a = arr.copy()
+        begin = time.time()
         sorted = mergeSort(a)
-        print("S: ", S, " Comparisons: ", comparisons)
+        end = time.time()
+        m_time = end - begin
+        print("S: ", S, " Comparisons: ", comparisons, " Time: ", m_time)
+
         S += 1
 main()
 

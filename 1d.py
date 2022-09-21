@@ -1,7 +1,7 @@
 import random
 import time
 
-S = 4
+S = 8
 comparisons = 0
 
 def insertionSort(arr):
@@ -25,7 +25,6 @@ def merge(left, right):
     global comparisons
 
     while (leftIndex < len(left) or rightIndex < len(right)):
-        comparisons += 1
         if leftIndex == len(left):
             sorted.append(right[rightIndex]);
             rightIndex += 1
@@ -35,9 +34,11 @@ def merge(left, right):
         elif (left[leftIndex] < right[rightIndex]):
             sorted.append(left[leftIndex])
             leftIndex += 1
+            comparisons += 1
         else:
             sorted.append(right[rightIndex]);
             rightIndex += 1
+            comparisons += 1
     return sorted;
 
 def mergeInsSort(arr):
