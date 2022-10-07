@@ -52,8 +52,6 @@ void dijkstra() {
     }
   }
 
-
-
   int source = 1;
   vector<int> distances(n + 1, INT_MAX);
   distances[source] = 0;
@@ -72,20 +70,24 @@ void dijkstra() {
     // Finding next min element to process: O(1)
     dist = priority_queue.top().first;
     head = priority_queue.top().second;
-    distances[head] = min(dist, distances[head]);
+
     minCount++;
 
     // Removing min element: log (e)
     priority_queue.pop();
+    if (dist != distances[head]) continue;
 
     auto edges = adjacencyList[head];
 
     // Considering every incident edge: O(v)
     for (auto edge: edges) {
       edgeCount++;
-      if (distances[head] + edge.second < distances[edge.first])
+      if (distances[head] + edge.second < distances[edge.first]) {
+        distances[edge.first] = distances[head] + edge.second;
         // Adding into priority queue: O(log e)
-        priority_queue.push(make_pair(distances[head] + edge.second, edge.first));
+        priority_queue.push(make_pair(distances[edge.first], edge.first));
+      }
+
     }
   }
   // O(e * (log e + v * log e)) = O(v * e * log e);
