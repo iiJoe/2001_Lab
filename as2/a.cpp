@@ -21,8 +21,8 @@ int parseInt(string s) {
 
 void dijkstra() {
 
-  // TODO read input and declare values later
-  int n = 200;
+  int n;
+  cin >> n;
 
   // if there is no edge, distance is -1
   vector<vector<int>> adjacencyMatrix(n + 1, vector<int>(n + 1, -1));
@@ -84,7 +84,7 @@ void dijkstra() {
     }
   }
 
-  for (int i = 0; i <= 200; i++) {
+  for (int i = 1; i <= n; i++) {
     cout << i << " - " << distances[i] << endl;
   }
 

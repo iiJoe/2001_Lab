@@ -21,8 +21,8 @@ int parseInt(string s) {
 
 void dijkstra() {
 
-  // TODO read input and declare values later
-  int n = 200;
+  int n;
+  cin >> n;
 
   // if there is no edge, distance is -1
   // vector<vector<int>> adjacencyMatrix(n + 1, vector<int>(n + 1, -1));
@@ -77,22 +77,19 @@ void dijkstra() {
     priority_queue.pop();
     if (dist != distances[head]) continue;
 
-    auto edges = adjacencyList[head];
-
     // Considering every incident edge: O(v)
-    for (auto edge: edges) {
+    for (auto edge : adjacencyList[head]) {
       edgeCount++;
       if (distances[head] + edge.second < distances[edge.first]) {
         distances[edge.first] = distances[head] + edge.second;
         // Adding into priority queue: O(log e)
         priority_queue.push(make_pair(distances[edge.first], edge.first));
       }
-
     }
   }
   // O(e * (log e + v * log e)) = O(v * e * log e);
 
-  for (int i = 0; i <= 200; i++) {
+  for (int i = 1; i <= n; i++) {
     cout << i << " - " << distances[i] << endl;
   }
   cout << "MinCount: " << minCount << endl;
